@@ -1,56 +1,21 @@
-# TP 2 — Gestion des salles et des utilisateurs avec JPA
-
-## Objectif
-
-Ce projet met en pratique la persistance des entités `Salle` et `Utilisateur` avec JPA et Hibernate, sans EJB. Les données sont stockées dans une base H2 en mémoire.
-
-## Technologies
-
-- Java
-- Maven
-- JPA 2.2 avec Hibernate 5.6
-- H2
-- JUnit 4
-
-## Fonctionnalités
-
-- Entités `Salle` et `Utilisateur`, avec une relation entre un utilisateur et sa salle.
-- `GenericDao<T>` pour les opérations de création, recherche, modification et suppression. Les écritures utilisent des transactions JPA avec validation ou annulation en cas d’erreur.
-- `SalleDao` pour rechercher les salles selon leur capacité.
-- `UtilisateurDao` pour rechercher les utilisateurs par salle ou par nom.
-- `ServiceGestion` pour utiliser les DAO et fermer les ressources JPA.
-
-## Lancer le projet
-
-Dans IntelliJ IDEA, ouvrir le projet Maven à partir de `pom.xml`.
-
-- Pour lancer la démonstration, exécuter la méthode `main` de `com.demo.App`.
-- Pour lancer les tests, exécuter `ServiceGestionTest` depuis `src/test/java/com/demo/service`.
-
-La démonstration crée une salle et un utilisateur associé, puis affiche les données retrouvées. La base H2 est en mémoire : les données ne sont pas conservées après l’arrêt du programme.
-
 ## Captures des résultats
 
-### 1. Tests JUnit
+### 1. Résultat des tests JUnit
+Les quatre tests passent, y compris la recherche des utilisateurs par nom.
 
-Les quatre tests JUnit passent, dont la recherche d’utilisateurs par nom.
+<img width="1807" height="1012" alt="01-tests-junit" src="docs/images/01-tests-junit.png" />
 
-![Résultat des quatre tests JUnit](docs/images/01-tests-junit.png)
-
-### 2. Création des tables
-
+### 2. Création des tables et insertion
 Hibernate crée les tables `Salle` et `Utilisateur` dans la base H2.
 
-![Création des tables Salle et Utilisateur](docs/images/02-creation-tables.png)
+<img width="1842" height="1022" alt="02-creation-tables" src="docs/images/02-creation-tables.png" />
 
-### 3. Insertion et affichage de la salle
+### 3. Affichage de la salle enregistrée
+Le programme enregistre la salle puis l’affiche après l’avoir lue depuis la base.
 
-L’application enregistre une salle, puis l’affiche après l’avoir relue depuis la base.
+<img width="1835" height="1035" alt="03-insertion-et-affichage" src="docs/images/03-insertion-et-affichage.png" />
 
-![Insertion et affichage de la salle](docs/images/03-insertion-et-affichage.png)
+### 4. Recherche de l’utilisateur
+Le programme retrouve l’utilisateur associé à « Salle Démo » et se termine sans erreur.
 
-### 4. Recherche de l’utilisateur et fin de l’exécution
-
-L’application retrouve l’utilisateur associé à « Salle Démo » et se termine avec le code de sortie 0.
-
-![Utilisateur retrouvé et exécution terminée](docs/images/04-recherche-et-fin.png)
+<img width="1817" height="992" alt="04-recherche-et-fin" src="docs/images/04-recherche-et-fin.png" />
